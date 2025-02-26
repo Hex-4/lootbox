@@ -6,14 +6,15 @@ import candyCane from "../assets/candy-cane.png"
 
 <Layout>
 	<script>
-
+		import confetti from "canvas-confetti"
 		// THE GOOD STUFF
 		const lootbox: HTMLElement = document.getElementById("lootbox")
 		const item: HTMLElement = document.getElementById("item")
 		const itemText: HTMLElement = document.getElementById("item-text")
 		lootbox.addEventListener('click', () => {
+			
 			lootbox.classList.remove("hover:scale-110")
-			lootbox.classList.replace("duration-400","duration-700")
+			lootbox.classList.replace("duration-400","duration-500")
       		lootbox.classList.add("!scale-0")
 			setTimeout(() => {
 				lootbox.classList.add("hidden")
@@ -21,23 +22,46 @@ import candyCane from "../assets/candy-cane.png"
 				setTimeout(() => {
 					item.classList.remove("scale-0")
 					item.classList.add("scale-100")
-
+					confetti({
+						particleCount: 150,
+						spread: 90,
+					})
 					setTimeout(() => {
+						
 						itemText.classList.remove("opacity-0")
 					},400)
 				},100)
 				
-			}, 700) // Wait for animation
+			}, 500) // Wait for animation
 			
     	});
+		item.addEventListener("click", () => {
+			itemText.classList.add("opacity-0")
+			item.classList.add("scale-0")
+			item.classList.remove("scale-100")
+			setTimeout(() => {
+				lootbox.classList.remove("hidden")
+				item.classList.add("hidden")
+				lootbox.classList.add("hover:scale-110")
+				setTimeout(() => {
+					
+      				lootbox.classList.remove("!scale-0")
+				},200)
+				
+			}, 100)
+			
+		})
 	</script>
 	<p class="text-slate-400 text-2xl mb-10">Loads Of Lootboxes</p>
-	<img id="lootbox" src={lootboxImg.src} class="w-72 drop-shadow-xl hover:drop-shadow-2xl transition-all duration-400 ease-out hover:scale-110 before:!scale-0 before:hidden mx-auto">
+	<img id="lootbox" src={lootboxImg.src} class="w-72 drop-shadow-xl hover:drop-shadow-2xl transition-all duration-400 ease-out hover:scale-110 before:!scale-0 before:hidden mx-auto transition-discrete">
 
 
-	<img id="item" src={candyCane.src} class="w-72 drop-shadow-xl hover:drop-shadow-2xl transition-all duration-600 ease-out before:!scale-100 mx-auto hidden scale-0">
-	<p class="text-slate-100 opacity-0 transition-all duration-500 mt-13" id="item-text">
+	<img id="item" src={candyCane.src} class="w-72 drop-shadow-xl hover:drop-shadow-2xl transition-all duration-600 ease-out before:!scale-100 mx-auto hidden scale-0 transition-discrete">
+	<p class="text-slate-100 opacity-0 transition-all duration-500 mt-13 text-xl" id="item-text">
 		WHAT THE SIGMA WHAT HUH HHOW WHAT WHY THE SIGMA
+		<br>
+		<br>
+		<span class="text-slate-500">click again to reroll</span>
 	</p>
 
 	
