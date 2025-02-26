@@ -1,11 +1,45 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import lootboxImg from '../assets/lootbox.png';
+import candyCane from "../assets/candy-cane.png"
 ---
 
 <Layout>
-	<Welcome />
+	<script>
+
+		// THE GOOD STUFF
+		const lootbox: HTMLElement = document.getElementById("lootbox")
+		const item: HTMLElement = document.getElementById("item")
+		const itemText: HTMLElement = document.getElementById("item-text")
+		lootbox.addEventListener('click', () => {
+			lootbox.classList.remove("hover:scale-110")
+			lootbox.classList.replace("duration-400","duration-700")
+      		lootbox.classList.add("!scale-0")
+			setTimeout(() => {
+				lootbox.classList.add("hidden")
+				item.classList.remove("hidden")
+				setTimeout(() => {
+					item.classList.remove("scale-0")
+					item.classList.add("scale-100")
+
+					setTimeout(() => {
+						itemText.classList.remove("opacity-0")
+					},400)
+				},100)
+				
+			}, 700) // Wait for animation
+			
+    	});
+	</script>
+	<p class="text-slate-400 text-2xl mb-10">Loads Of Lootboxes</p>
+	<img id="lootbox" src={lootboxImg.src} class="w-72 drop-shadow-xl hover:drop-shadow-2xl transition-all duration-400 ease-out hover:scale-110 before:!scale-0 before:hidden mx-auto">
+
+
+	<img id="item" src={candyCane.src} class="w-72 drop-shadow-xl hover:drop-shadow-2xl transition-all duration-600 ease-out before:!scale-100 mx-auto hidden scale-0">
+	<p class="text-slate-100 opacity-0 transition-all duration-500 mt-13" id="item-text">
+		WHAT THE SIGMA WHAT HUH HHOW WHAT WHY THE SIGMA
+	</p>
+
+	
+</img>
 </Layout>
