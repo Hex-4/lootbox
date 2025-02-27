@@ -9,9 +9,11 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@originjs/vite-plugin-content": "^1.0.5",
     "@tailwindcss/vite": "^4.0.8",
     "astro": "^5.3.1",
     "canvas-confetti": "^1.9.3",
+    "js-weighted-list": "^0.1.1",
     "tailwindcss": "^4.0.8"
   }
 }

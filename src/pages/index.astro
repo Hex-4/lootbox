@@ -1,64 +1,92 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import lootboxImg from '../assets/lootbox.png';
-import candyCane from "../assets/candy-cane.png"
+import items from "../items.toml"
+
 ---
 
 <Layout>
 	<script>
 		import confetti from "canvas-confetti"
+		import WeightedList from "js-weighted-list"
+		
+		let itemsWL = new WeightedList()
+
 		// THE GOOD STUFF
 		const lootbox: HTMLElement = document.getElementById("lootbox")
 		const item: HTMLElement = document.getElementById("item")
 		const itemText: HTMLElement = document.getElementById("item-text")
+		const items = JSON.parse(item.dataset.items)["items"]
+
+
+
+		// LOOT GENERATION
+		items.forEach(e => {
+			itemsWL.push({'key': e.filename, 'weight': e.chance_percent, 'data': e})
+		});
+		console.log(itemsWL)
+		
+		let currentItem = itemsWL.peek()["data"]
+
 		lootbox.addEventListener('click', () => {
-			
-			lootbox.classList.remove("hover:scale-110")
-			lootbox.classList.replace("duration-400","duration-500")
-      		lootbox.classList.add("!scale-0")
-			setTimeout(() => {
-				lootbox.classList.add("hidden")
-				item.classList.remove("hidden")
+			if (lootbox.getAnimations().length == 0 && item.getAnimations().length == 0){ // don't run during animations
+				currentItem = itemsWL.peek()[0].data
+				console.log(currentItem)
+				item.classList.remove("translate-y-80","opacity-0")
+				lootbox.classList.remove("hover:scale-110")
+				lootbox.classList.replace("duration-400","duration-500")
+				lootbox.classList.add("!scale-0")
+				item.src = "/assets/" + currentItem.filename
+				document.getElementById("itemtext-inner").innerText = currentItem.description
 				setTimeout(() => {
-					item.classList.remove("scale-0")
-					item.classList.add("scale-100")
-					confetti({
-						particleCount: 150,
-						spread: 90,
-					})
+					lootbox.classList.add("hidden")
+					item.classList.remove("hidden")
 					setTimeout(() => {
-						
-						itemText.classList.remove("opacity-0")
-					},400)
-				},100)
-				
-			}, 500) // Wait for animation
+						item.classList.remove("scale-0")
+						item.classList.add("scale-100")
+						confetti({
+							particleCount: 150,
+							spread: 90,
+						})
+						setTimeout(() => {
+							
+							itemText.classList.remove("opacity-0")
+						},400)
+					},100)
+					
+				}, 500) // Wait for animation
+			}
+			
 			
     	});
 		item.addEventListener("click", () => {
-			itemText.classList.add("opacity-0")
-			item.classList.add("scale-0")
-			item.classList.remove("scale-100")
-			setTimeout(() => {
-				lootbox.classList.remove("hidden")
-				item.classList.add("hidden")
-				lootbox.classList.add("hover:scale-110")
+			if (lootbox.getAnimations().length == 0 && item.getAnimations().length == 0){
+				itemText.classList.add("opacity-0")
+				item.classList.add("translate-y-80","opacity-0")
+				item.classList.remove("scale-100")
 				setTimeout(() => {
+					lootbox.classList.remove("hidden")
+					item.classList.add("hidden")
+					lootbox.classList.add("hover:scale-110")
+					setTimeout(() => {
+						item.classList.add("scale-0")
+						lootbox.classList.remove("!scale-0")
+					},200)
 					
-      				lootbox.classList.remove("!scale-0")
-				},200)
-				
-			}, 100)
-			
+				}, 600)
+			}
 		})
+
+		
+
 	</script>
 	<p class="text-slate-400 text-2xl mb-10">Loads Of Lootboxes</p>
-	<img id="lootbox" src={lootboxImg.src} class="w-72 drop-shadow-xl hover:drop-shadow-2xl transition-all duration-400 ease-out hover:scale-110 before:!scale-0 before:hidden mx-auto transition-discrete">
+	<img id="lootbox" src="/assets/lootbox.png" class="w-72 drop-shadow-xl hover:drop-shadow-2xl transition-all duration-400 ease-out hover:scale-110 before:!scale-0 before:hidden mx-auto transition-discrete">
 
 
-	<img id="item" src={candyCane.src} class="w-72 drop-shadow-xl hover:drop-shadow-2xl transition-all duration-600 ease-out before:!scale-100 mx-auto hidden scale-0 transition-discrete">
-	<p class="text-slate-100 opacity-0 transition-all duration-500 mt-13 text-xl" id="item-text">
-		WHAT THE SIGMA WHAT HUH HHOW WHAT WHY THE SIGMA
+	<img id="item" src="/assets/candy-cane.png" class="w-72 drop-shadow-xl transition-all duration-600 ease-out before:!scale-100 mx-auto hidden scale-0 transition-discrete before:translate-y-80 before:opacity-0" data-items={JSON.stringify(items)}>
+	<p class="text-slate-100 opacity-0 transition-all duration-600 mt-13 text-xl" id="item-text">
+		<span id="itemtext-inner"></span>
+		
 		<br>
 		<br>
 		<span class="text-slate-500">click again to reroll</span>

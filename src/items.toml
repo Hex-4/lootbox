@@ -1,0 +1,9 @@
+[[items]]
+filename = "candy-cane.png"
+description = "Don’t eat that, it’s from the Christmas event two years ago!"
+chance_percent = 25
+
+[[items]]
+filename = "sword.png"
+description = "Sadly less mighty than the pen."
+chance_percent = 75
