@@ -21,45 +21,49 @@ import items from "../items.toml"
 
 		// LOOT GENERATION
 		items.forEach(e => {
+			console.log(e)
 			itemsWL.push({'key': e.filename, 'weight': e.chance_percent, 'data': e})
 		});
 		console.log(itemsWL)
 		
-		let currentItem = itemsWL.peek()["data"]
+		let currentItem
 
 		lootbox.addEventListener('click', () => {
-			if (lootbox.getAnimations().length == 0 && item.getAnimations().length == 0){ // don't run during animations
-				currentItem = itemsWL.peek()[0].data
+			if ((lootbox.getAnimations().length == 0 || lootbox.matches(":hover")) && item.getAnimations().length == 0){ // don't run during animations
+				currentItem = itemsWL.peek()[0]
 				console.log(currentItem)
 				item.classList.remove("translate-y-80","opacity-0")
 				lootbox.classList.remove("hover:scale-110")
-				lootbox.classList.replace("duration-400","duration-500")
+				lootbox.classList.replace("duration-400","duration-400")
 				lootbox.classList.add("!scale-0")
-				item.src = "/assets/" + currentItem.filename
-				document.getElementById("itemtext-inner").innerText = currentItem.description
+				item.src = "/assets/" + currentItem.data.filename
+				document.getElementById("itemtext-inner").innerText = currentItem.data.description
+				document.getElementById("itemtext-title").innerText = currentItem.data.name
 				setTimeout(() => {
 					lootbox.classList.add("hidden")
 					item.classList.remove("hidden")
 					setTimeout(() => {
 						item.classList.remove("scale-0")
 						item.classList.add("scale-100")
-						confetti({
-							particleCount: 150,
-							spread: 90,
-						})
+						if (currentItem.data.chance_percent < 5) {
+								confetti({
+								particleCount: (5 - currentItem.data.chance_percent)*50, // more confetti for rarer items
+								spread: 90,
+							})
+						}
 						setTimeout(() => {
 							
 							itemText.classList.remove("opacity-0")
 						},400)
 					},100)
 					
-				}, 500) // Wait for animation
+				}, 400) // Wait for animation
 			}
 			
 			
     	});
 		item.addEventListener("click", () => {
-			if (lootbox.getAnimations().length == 0 && item.getAnimations().length == 0){
+			if ((lootbox.getAnimations().length == 0 || lootbox.matches(":hover")) && item.getAnimations().length == 0){
 				itemText.classList.add("opacity-0")
 				item.classList.add("translate-y-80","opacity-0")
 				item.classList.remove("scale-100")
@@ -85,6 +89,8 @@ import items from "../items.toml"
 
 	<img id="item" src="/assets/candy-cane.png" class="w-72 drop-shadow-xl transition-all duration-600 ease-out before:!scale-100 mx-auto hidden scale-0 transition-discrete before:translate-y-80 before:opacity-0" data-items={JSON.stringify(items)}>
 	<p class="text-slate-100 opacity-0 transition-all duration-600 mt-13 text-xl" id="item-text">
+		<span id="itemtext-title" class="text-2xl font-bold"></span>
+		<br>
 		<span id="itemtext-inner"></span>
 		
 		<br>
