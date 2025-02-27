@@ -14,7 +14,7 @@ chance_percent = 25
 filename = "game-controller.png"
 name = "Game Controller"
 description = "Are ya winning son?"
-chance_percent = 10
+chance_percent = 1000
 
 [[items]]
 filename = "bone.png"
@@ -44,7 +44,7 @@ chance_percent = 5
 [[items]]
 filename = "candy-cane.png"
 name = "Candy Cane"
-description = "Don’t eat that, it’s from the Christmas event two years ago!."
+description = "Don’t eat that, it’s from the Christmas event two years ago!"
 chance_percent = 2.5
 
 [[items]]
