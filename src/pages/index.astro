@@ -23,6 +23,7 @@ import items from "../items.toml"
 		items.forEach(e => {
 			console.log(e)
 			itemsWL.push({'key': e.filename, 'weight': e.chance_percent, 'data': e})
+			console.log()
 		});
 		console.log(itemsWL)
 		
@@ -37,8 +38,13 @@ import items from "../items.toml"
 				lootbox.classList.replace("duration-400","duration-400")
 				lootbox.classList.add("!scale-0")
 				item.src = "/assets/" + currentItem.data.filename
+				if (currentItem.data.filename == "schrodingers-cat.gif") {
+					document.getElementById("mythic-label")?.classList.replace("hidden", "inline")
+				} else {
+					document.getElementById("mythic-label")?.classList.replace("inline", "hidden")
+				}
 				document.getElementById("itemtext-inner").innerText = currentItem.data.description
-				document.getElementById("itemtext-title").innerText = currentItem.data.name
+				document.getElementById("itemtext-title-inner").innerText = currentItem.data.name
 				setTimeout(() => {
 					lootbox.classList.add("hidden")
 					item.classList.remove("hidden")
@@ -80,16 +86,24 @@ import items from "../items.toml"
 			}
 		})
 
+		setInterval(() => {
+			document.getElementById("code").innerText = "42" + Math.floor(Date.now() / 10).toString()
+		},50)
 		
 
 	</script>
-	<p class="text-slate-400 text-2xl mb-10">Loads Of Lootboxes</p>
+	<p class="text-slate-400 text-2xl mb-3">Loads Of Lootboxes</p>
+	<p class="text-slate-600 text-xl mb-10" id="code">:3</p>
 	<img id="lootbox" src="/assets/lootbox.png" class="w-72 drop-shadow-xl hover:drop-shadow-2xl transition-all duration-400 ease-out hover:scale-110 before:!scale-0 before:hidden mx-auto transition-discrete">
 
 
 	<img id="item" src="/assets/candy-cane.png" class="w-72 drop-shadow-xl transition-all duration-600 ease-out before:!scale-100 mx-auto hidden scale-0 transition-discrete before:translate-y-80 before:opacity-0" data-items={JSON.stringify(items)}>
-	<p class="text-slate-100 opacity-0 transition-all duration-600 mt-13 text-xl" id="item-text">
-		<span id="itemtext-title" class="text-2xl font-bold"></span>
+	<div class="text-slate-100 opacity-0 transition-all duration-600 mt-13 text-xl" id="item-text">
+		<div id="itemtext-title" class="flex align-middle justify-center gap-3">
+			<span id="itemtext-title-inner" class="text-2xl font-bold"></span>
+			 <span id="mythic-label" class="bg-purple-500 p-1 rounded-full px-2 shadow-purple-900 shadow-2xl text-sm hidden before:inline">MYTHIC</span>
+		</div>
+		
 		<br>
 		<span id="itemtext-inner"></span>
 		

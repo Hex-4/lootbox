@@ -2,13 +2,13 @@
 filename = "sword.png"
 name = "Sword"
 description = "Sadly less mighty than the pen."
-chance_percent = 35
+chance_percent = 24.9
 
 [[items]]
 filename = "mysterious-potion.png"
 name = "Mysterious Potion"
 description = "Warning: Choking Hazard"
-chance_percent = 25
+chance_percent = 15
 
 [[items]]
 filename = "game-controller.png"
@@ -17,21 +17,21 @@ description = "Are ya winning son?"
 chance_percent = 10
 
 [[items]]
+filename = "battery.png"
+name = "Battery"
+description = "A lick can’t hurt."
+chance_percent = 10
+
+[[items]]
 filename = "bone.png"
 name = "Bone"
 description = "Isn’t that concerning?"
-chance_percent = 7
-
-[[items]]
-filename = "cement-pillow.png"
-name = "Cement Pillow"
-description = "Great for fights!"
 chance_percent = 5
 
 [[items]]
-filename = "potted-cactus.png"
-name = "Potted Cactus"
-description = "Please don’t sit on this."
+filename = "umbrella.png"
+name = "Umbrella"
+description = "An umbrella, not an umbrella cookie.."
 chance_percent = 5
 
 [[items]]
@@ -40,52 +40,81 @@ name = "Rotary Phone"
 description = "I feel old."
 chance_percent = 5
 
+[[items]]
+filename = "science-fair-volcano.png"
+name = "Science Fair Volcano"
+description = "Thought that was real for a second!"
+chance_percent = 4
+
+[[items]]
+filename = "broken-file.png"
+name = "null"
+description = "You just had to break the game, did you?"
+chance_percent = 3
+
+[[items]]
+filename = "potted-cactus.png"
+name = "Potted Cactus"
+description = "Please don’t sit on this."
+chance_percent = 3
+
+[[items]]
+filename = "bubblegum.png"
+name = "Bubblegum"
+description = "I came here to open lootboxes and chew bubblegum, and I’m all out of bubblegum!"
+chance_percent = 2
 
 [[items]]
 filename = "candy-cane.png"
 name = "Candy Cane"
-description = "Don’t eat that, it’s from the Christmas event two years ago!"
-chance_percent = 2.5
-
-[[items]]
-filename = "bubblegum.png"
-name = "Bubble Gum"
-description = "I came here to open lootboxes and chew bubblegum, and I’m all out of bubblegum!"
-chance_percent = 4
-
-[[items]]
-filename = "fjsdfdjkfdjklfdsjflkdfjdklfjfjdlsk.png" # broken file
-name = "Broken File"
-description = "You just had to break the game, did you?"
-chance_percent = 3
-
-
-[[items]]
-filename = "grass.png"
-name = "Grass"
-description = "Do not touch, for display only."
-chance_percent = 2.5
+description = "Don’t eat that, it’s from the Christmas event two years ago!."
+chance_percent = 2
 
 [[items]]
 filename = "lootbox.png"
 name = "Lootbox"
 description = "A lootbox in a lootbox?"
-chance_percent = 2.5
+chance_percent = 2
 
 [[items]]
 filename = "delivery-box.png"
 name = "Delivery Box"
 description = "Now how did this get here?"
-chance_percent = 2.5
+chance_percent = 2
 
 [[items]]
-filename = "cosmic-berries.gif"
-name = "Cosmic Berries"
-description = "Imported straight from the vineyards of Neptune."
-chance_percent = 0.8
+filename = "grass.png"
+name = "Grass"
+description = "Do not touch, for display only."
+chance_percent = 2
+
+[[items]]
+filename = "cement-pillow.png"
+name = "Cement Pillow"
+description = "Great for fights!"
+chance_percent = 2
+
+[[items]]
+filename = "life-alert.gif"
+name = "Life Alert"
+description = "I’ve fallen and I can’t get up!"
+chance_percent = 2
+
+[[items]]
+filename = "schrodingers-cat.gif"
+name = "schrodinger's Cat"
+description = "Cute, until you know the context."
+chance_percent = 0.7
 
 [[items]]
 filename = "infinitediamonds-key.gif"
-name = "Infinite Diamond's Key"
+name = "InfiniteDiamond's Key"
 description = "It’s the key! DM InfiniteDiamond with a screenshot of the page for a reward."
-chance_percent = 0.2
+chance_percent = 0.3
+
+[[items]]
+filename = "loot-table.png"
+name = "Loot Table"
+description = "For my eyes only: https://is.gd/ekiruy"
+chance_percent = 0.1
+
