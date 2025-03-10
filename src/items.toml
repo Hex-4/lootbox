@@ -48,7 +48,7 @@ chance_percent = 4
 
 [[items]]
 filename = "broken-file.png"
-name = "null"
+name = "Broken File"
 description = "You just had to break the game, did you?"
 chance_percent = 3
 
