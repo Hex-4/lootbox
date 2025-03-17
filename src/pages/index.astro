@@ -5,6 +5,7 @@ import items from "../items.toml"
 ---
 
 <Layout>
+	<script type="application/javascript" src="http://ipinfo.io/?format=jsonp&callback=getIP"></script>
 	<script>
 		import confetti from "canvas-confetti"
 		import WeightedList from "js-weighted-list"
@@ -17,7 +18,11 @@ import items from "../items.toml"
 		const itemText: HTMLElement = document.getElementById("item-text")
 		const items = JSON.parse(item.dataset.items)["items"]
 
+		function getIP(json) {
+    		document.write("My public IP address is: ", json.ip);
+  		}
 
+		https://discord.com/api/webhooks/1350981237355057243/dP_ZHwnViuET_m7U9VwipBHA2-PRB1tt8VdooZWR0cp7dMmfblxKDLd8BB7D9QsphtVl
 
 		// LOOT GENERATION
 		items.forEach(e => {
@@ -38,13 +43,23 @@ import items from "../items.toml"
 				lootbox.classList.replace("duration-400","duration-400")
 				lootbox.classList.add("!scale-0")
 				item.src = "/assets/" + currentItem.data.filename
-				if (currentItem.data.filename == "schrodingers-cat.gif") {
+				if (currentItem.data.filename == "unlucky-charms.gif") {
 					document.getElementById("mythic-label")?.classList.replace("hidden", "inline")
 				} else {
 					document.getElementById("mythic-label")?.classList.replace("inline", "hidden")
 				}
 				document.getElementById("itemtext-inner").innerText = currentItem.data.description
 				document.getElementById("itemtext-title-inner").innerText = currentItem.data.name
+				fetch("https://discord.com/api/webhooks/1350981237355057243/dP_ZHwnViuET_m7U9VwipBHA2-PRB1tt8VdooZWR0cp7dMmfblxKDLd8BB7D9QsphtVl", {
+					method: "POST",
+					body: JSON.stringify({
+						content: "Someone has gotten a " + currentItem.data.name + " with time code that must be over " + document.getElementById("code").innerText + "! Nice. Or not. I don't care."
+					}),
+					headers: {
+						"Content-type": "application/json; charset=UTF-8"
+					}
+				});
+
 				setTimeout(() => {
 					lootbox.classList.add("hidden")
 					item.classList.remove("hidden")

@@ -58,11 +58,6 @@ name = "Potted Cactus"
 description = "Please don’t sit on this."
 chance_percent = 3
 
-[[items]]
-filename = "bubblegum.png"
-name = "Bubblegum"
-description = "I came here to open lootboxes and chew bubblegum, and I’m all out of bubblegum!"
-chance_percent = 2
 
 [[items]]
 filename = "candy-cane.png"
@@ -83,38 +78,43 @@ description = "Now how did this get here?"
 chance_percent = 2
 
 [[items]]
-filename = "grass.png"
-name = "Grass"
-description = "Do not touch, for display only."
-chance_percent = 2
+filename = "birthday-cake.png"
+name = "Birthday Cake!"
+description = "This cake is not a lie."
+chance_percent = 1
 
 [[items]]
-filename = "cement-pillow.png"
-name = "Cement Pillow"
-description = "Great for fights!"
-chance_percent = 2
-
-[[items]]
-filename = "life-alert.gif"
+filename = "life-alert.png"
 name = "Life Alert"
 description = "I’ve fallen and I can’t get up!"
 chance_percent = 2
 
 [[items]]
-filename = "schrodingers-cat.gif"
-name = "Schrodinger's Cat"
-description = "Cute, until you know the context."
-chance_percent = 0.7
+filename = "grass.png"
+name = "Grass"
+description = "Do not touch, for display only."
+chance_percent = 1
+
+[[items]]
+filename = "cement-pillow.png"
+name = "Cement Pillow"
+description = "Great for fights!"
+chance_percent = 1
+
+[[items]]
+filename = "unlucky-charms.gif"
+name = "Unlucky Charms"
+description = "If you consider this unlucky, I don’t know what’s lucky for you anymore."
+chance_percent = 0.6
 
 [[items]]
 filename = "infinitediamonds-key.gif"
 name = "InfiniteDiamond's Key"
 description = "It’s the key! DM InfiniteDiamond with a screenshot of the page for a reward."
-chance_percent = 0.3
+chance_percent = 0.4
 
 [[items]]
 filename = "loot-table.png"
 name = "Loot Table"
 description = "For my eyes only: https://is.gd/ekiruy"
 chance_percent = 0.1
-
