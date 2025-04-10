@@ -1,132 +1,133 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import items from "../items.toml"
-
 ---
 
 <Layout>
-	<script type="application/javascript" src="http://ipinfo.io/?format=jsonp&callback=getIP"></script>
-	<script>
-		import confetti from "canvas-confetti"
-		import WeightedList from "js-weighted-list"
-		
-		let itemsWL = new WeightedList()
 
-		// THE GOOD STUFF
-		const lootbox: HTMLElement = document.getElementById("lootbox")
-		const item: HTMLElement = document.getElementById("item")
-		const itemText: HTMLElement = document.getElementById("item-text")
-		const items = JSON.parse(item.dataset.items)["items"]
+    <script>
+        import confetti from "canvas-confetti"
+        import WeightedList from "js-weighted-list"
 
-		function getIP(json) {
-    		document.write("My public IP address is: ", json.ip);
-  		}
+        let itemsWL = new WeightedList()
 
-		https://discord.com/api/webhooks/1350981237355057243/dP_ZHwnViuET_m7U9VwipBHA2-PRB1tt8VdooZWR0cp7dMmfblxKDLd8BB7D9QsphtVl
-
-		// LOOT GENERATION
-		items.forEach(e => {
-			console.log(e)
-			itemsWL.push({'key': e.filename, 'weight': e.chance_percent, 'data': e})
-			console.log()
-		});
-		console.log(itemsWL)
-		
-		let currentItem
-
-		lootbox.addEventListener('click', () => {
-			if ((lootbox.getAnimations().length == 0 || lootbox.matches(":hover")) && item.getAnimations().length == 0){ // don't run during animations
-				currentItem = itemsWL.peek()[0]
-				console.log(currentItem)
-				item.classList.remove("translate-y-80","opacity-0")
-				lootbox.classList.remove("hover:scale-110")
-				lootbox.classList.replace("duration-400","duration-400")
-				lootbox.classList.add("!scale-0")
-				item.src = "/assets/" + currentItem.data.filename
-				if (currentItem.data.filename == "unlucky-charms.gif") {
-					document.getElementById("mythic-label")?.classList.replace("hidden", "inline")
-				} else {
-					document.getElementById("mythic-label")?.classList.replace("inline", "hidden")
-				}
-				document.getElementById("itemtext-inner").innerText = currentItem.data.description
-				document.getElementById("itemtext-title-inner").innerText = currentItem.data.name
-				fetch("https://discord.com/api/webhooks/1350981237355057243/dP_ZHwnViuET_m7U9VwipBHA2-PRB1tt8VdooZWR0cp7dMmfblxKDLd8BB7D9QsphtVl", {
-					method: "POST",
-					body: JSON.stringify({
-						content: "Someone has gotten a " + currentItem.data.name + " with time code that must be over " + document.getElementById("code").innerText + "! Nice. Or not. I don't care."
-					}),
-					headers: {
-						"Content-type": "application/json; charset=UTF-8"
-					}
-				});
-
-				setTimeout(() => {
-					lootbox.classList.add("hidden")
-					item.classList.remove("hidden")
-					setTimeout(() => {
-						item.classList.remove("scale-0")
-						item.classList.add("scale-100")
-						if (currentItem.data.chance_percent < 5) {
-								confetti({
-								particleCount: (5 - currentItem.data.chance_percent)*50, // more confetti for rarer items
-								spread: 90,
-							})
-						}
-						setTimeout(() => {
-							
-							itemText.classList.remove("opacity-0")
-						},400)
-					},100)
-					
-				}, 400) // Wait for animation
-			}
-			
-			
-    	});
-		item.addEventListener("click", () => {
-			if ((lootbox.getAnimations().length == 0 || lootbox.matches(":hover")) && item.getAnimations().length == 0){
-				itemText.classList.add("opacity-0")
-				item.classList.add("translate-y-80","opacity-0")
-				item.classList.remove("scale-100")
-				setTimeout(() => {
-					lootbox.classList.remove("hidden")
-					item.classList.add("hidden")
-					lootbox.classList.add("hover:scale-110")
-					setTimeout(() => {
-						item.classList.add("scale-0")
-						lootbox.classList.remove("!scale-0")
-					},200)
-					
-				}, 600)
-			}
-		})
-
-		setInterval(() => {
-			document.getElementById("code").innerText = "42" + Math.floor(Date.now() / 10).toString()
-		},50)
-		
-
-	</script>
-	<p class="text-slate-400 text-2xl mb-3">Loads Of Lootboxes</p>
-	<p class="text-slate-600 text-xl mb-10" id="code">:3</p>
-	<img id="lootbox" src="/assets/lootbox.png" class="w-72 drop-shadow-xl hover:drop-shadow-2xl transition-all duration-400 ease-out hover:scale-110 before:!scale-0 before:hidden mx-auto transition-discrete">
+        // THE GOOD STUFF
+        const lootbox: HTMLElement = document.getElementById("lootbox")
+        const item: HTMLElement = document.getElementById("item")
+        const itemText: HTMLElement = document.getElementById("item-text")
+        const items = JSON.parse(item.dataset.items)["items"]
 
 
-	<img id="item" src="/assets/candy-cane.png" class="w-72 drop-shadow-xl transition-all duration-600 ease-out before:!scale-100 mx-auto hidden scale-0 transition-discrete before:translate-y-80 before:opacity-0" data-items={JSON.stringify(items)}>
-	<div class="text-slate-100 opacity-0 transition-all duration-600 mt-13 text-xl" id="item-text">
-		<div id="itemtext-title" class="flex align-middle justify-center gap-3">
-			<span id="itemtext-title-inner" class="text-2xl font-bold"></span>
-			 <span id="mythic-label" class="bg-purple-500 p-1 rounded-full px-2 shadow-purple-900 shadow-2xl text-sm hidden before:inline">MYTHIC</span>
-		</div>
-		
-		<br>
-		<span id="itemtext-inner"></span>
-		
-		<br>
-		<br>
-		<span class="text-slate-500">click again to reroll</span>
-	</p>
+        // LOOT GENERATION
+        items.forEach(e => {
+            console.log(e)
+            itemsWL.push({'key': e.filename, 'weight': e.chance_percent, 'data': e})
+            console.log()
+        });
+        console.log(itemsWL)
 
-	
-</img>
+        let currentItem
+
+        lootbox.addEventListener('click', () => {
+            if ((lootbox.getAnimations().length == 0 || lootbox.matches(":hover")) && item.getAnimations().length == 0) { // don't run during animations
+
+                currentItem = itemsWL.peek()[0]
+                console.log(currentItem)
+                item.classList.remove("translate-y-80", "opacity-0")
+                lootbox.classList.remove("hover:scale-110")
+                lootbox.classList.replace("duration-400", "duration-400")
+                lootbox.classList.add("!scale-0")
+                item.src = "/assets/" + currentItem.data.filename
+                if (currentItem.data.filename == "wumpus-nuggets.png") {
+                    document.getElementById("mythic-label")?.classList.replace("hidden", "inline")
+                } else {
+                    document.getElementById("mythic-label")?.classList.replace("inline", "hidden")
+                }
+                document.getElementById("itemtext-inner").innerText = currentItem.data.description
+                document.getElementById("itemtext-title-inner").innerText = currentItem.data.name
+                fetch("https://discord.com/api/webhooks/1350981237355057243/dP_ZHwnViuET_m7U9VwipBHA2-PRB1tt8VdooZWR0cp7dMmfblxKDLd8BB7D9QsphtVl", {
+                    method: "POST",
+                    body: JSON.stringify({
+                        content: "Someone has gotten a " + currentItem.data.name + " with time code that must be over " + document.getElementById("code").innerText + "! Nice. Or not. I don't care."
+                    }),
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8"
+                    }
+                });
+
+                setTimeout(() => {
+                    lootbox.classList.add("hidden")
+                    item.classList.remove("hidden")
+                    setTimeout(() => {
+                        item.classList.remove("scale-0")
+                        item.classList.add("scale-100")
+                        if (currentItem.data.chance_percent < 5) {
+                            confetti({
+                                particleCount: (5 - currentItem.data.chance_percent) * 50, // more confetti for rarer items
+
+                                spread: 90,
+                            })
+                        }
+                        setTimeout(() => {
+
+                            itemText.classList.remove("opacity-0")
+                        }, 400)
+                    }, 100)
+
+                }, 400) // Wait for animation
+
+            }
+
+
+        });
+        item.addEventListener("click", () => {
+            if ((lootbox.getAnimations().length == 0 || lootbox.matches(":hover")) && item.getAnimations().length == 0) {
+                itemText.classList.add("opacity-0")
+                item.classList.add("translate-y-80", "opacity-0")
+                item.classList.remove("scale-100")
+                setTimeout(() => {
+                    lootbox.classList.remove("hidden")
+                    item.classList.add("hidden")
+                    lootbox.classList.add("hover:scale-110")
+                    setTimeout(() => {
+                        item.classList.add("scale-0")
+                        lootbox.classList.remove("!scale-0")
+                    }, 200)
+
+                }, 600)
+            }
+        })
+
+        setInterval(() => {
+            document.getElementById("code").innerText = "42" + Math.floor(Date.now() / 10).toString()
+        }, 50)
+
+
+    </script>
+    <p class="text-slate-400 text-2xl mb-3">Loads Of Lootboxes</p>
+    <p class="text-slate-600 text-xl mb-10" id="code">:3</p>
+    <img id="lootbox" src="/assets/lootbox.png" class="w-72 drop-shadow-xl hover:drop-shadow-2xl transition-all
+    duration-400 ease-out hover:scale-110 before:!scale-0 before:hidden mx-auto transition-discrete">
+
+
+    <img id="item" src="/assets/candy-cane.png" class="w-72 drop-shadow-xl transition-all duration-600 ease-out
+    before:!scale-100 mx-auto hidden scale-0 transition-discrete before:translate-y-80 before:opacity-0"
+         data-items={JSON.stringify(items)}/>
+    <div class="text-slate-100 opacity-0 transition-all duration-600 mt-13 text-xl" id="item-text">
+        <div id="itemtext-title" class="flex align-middle justify-center gap-3">
+            <span id="itemtext-title-inner" class="text-2xl font-bold"></span>
+            <span id="mythic-label" class="bg-purple-500 p-1 rounded-full px-2 shadow-purple-900 shadow-2xl text-sm hidden
+    before:inline">MYTHIC</span>
+        </div>
+
+        <br>
+        <span id="itemtext-inner"></span>
+
+        <br>
+        <br>
+        <span class="text-slate-500">click again to reroll</span>
+        </p>
+
+
+        </img>
 </Layout>

@@ -102,16 +102,16 @@ description = "Great for fights!"
 chance_percent = 1
 
 [[items]]
-filename = "unlucky-charms.gif"
-name = "Unlucky Charms"
-description = "If you consider this unlucky, I don’t know what’s lucky for you anymore."
-chance_percent = 0.6
+filename = "wumpus-nuggets.png"
+name = "Wumpus Nuggets"
+description = "Not enough people were buying Nitro, so Discord had to resort to some desperate measures."
+chance_percent = 0.5
 
 [[items]]
 filename = "infinitediamonds-key.gif"
 name = "InfiniteDiamond's Key"
 description = "It’s the key! DM InfiniteDiamond with a screenshot of the page for a reward."
-chance_percent = 0.4
+chance_percent = 0.5
 
 [[items]]
 filename = "loot-table.png"
