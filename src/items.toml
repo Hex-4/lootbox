@@ -47,7 +47,7 @@ description = "Thought that was real for a second!"
 chance_percent = 4
 
 [[items]]
-filename = "broken-file.png"
+filename = "broken-ddddddddfile.png"
 name = "Broken File"
 description = "You just had to break the game, did you?"
 chance_percent = 3
@@ -67,7 +67,7 @@ chance_percent = 2
 [[items]]
 filename = "candy-cane.png"
 name = "Candy Cane"
-description = "Don’t eat that, it’s from the Christmas event two years ago!."
+description = "Don’t eat that, it’s from the Christmas event two years ago!"
 chance_percent = 2
 
 [[items]]
@@ -107,7 +107,7 @@ description = "We shape our tools, and then our tools shape us."
 chance_percent = 0.4
 
 [[items]]
-filename = "infinitediamond’s-key.gif"
+filename = "infinitediamonds-key.gif"
 name = "InfiniteDiamond’s Key"
 description = "It’s the key! DM InfiniteDiamond with a screenshot of the page for a reward."
 chance_percent = 0.6
