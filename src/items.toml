@@ -1,3 +1,4 @@
+
 [[items]]
 filename = "sword.png"
 name = "Sword"
@@ -40,29 +41,18 @@ name = "Rotary Phone"
 description = "I feel old."
 chance_percent = 5
 
-[[items]]
-filename = "science-fair-volcano.png"
-name = "Science Fair Volcano"
-description = "Thought that was real for a second!"
-chance_percent = 4
 
 [[items]]
-filename = "broken-ddddddddfile.png"
+filename = "brokennnnnnnnnnnnn-file.png"
 name = "Broken File"
 description = "You just had to break the game, did you?"
-chance_percent = 3
-
-[[items]]
-filename = "potted-cactus.png"
-name = "Potted Cactus"
-description = "Please don’t sit on this."
 chance_percent = 3
 
 [[items]]
 filename = "mind.png"
 name = "Mind"
 description = "Our devs lost these a while ago, return immediately."
-chance_percent = 2
+chance_percent = 8
 
 [[items]]
 filename = "candy-cane.png"
@@ -77,27 +67,15 @@ description = "A lootbox in a lootbox?"
 chance_percent = 2
 
 [[items]]
-filename = "delivery-box.png"
-name = "Delivery Box"
-description = "Now how did this get here?"
-chance_percent = 2
-
-[[items]]
 filename = "lemon.gif"
 name = "Lemon"
 description = "Something normal for onc- AH GET IT OUT OF HERE!!!"
-chance_percent = 3
+chance_percent = 7
 
 [[items]]
 filename = "grass.png"
 name = "Grass"
 description = "Do not touch, for display only."
-chance_percent = 1
-
-[[items]]
-filename = "cement-pillow.png"
-name = "Cement Pillow"
-description = "Why does this even exist?"
 chance_percent = 1
 
 [[items]]
@@ -113,15 +91,15 @@ description = "It’s the key! DM InfiniteDiamond with a screenshot of the page 
 chance_percent = 0.6
 
 [[items]]
-filename = "schrodingers-cat.gif"
+filename = "schrodingers-cat.png"
 name = "Schrodinger’s Cat"
 description = "The cat escaped, and it wants revenge."
 chance_percent = 0.9
 
 [[items]]
-filename = "grilled-cheese-sandwich.gif"
+filename = "grilled-cheese-sandwich.png"
 name = "Grilled Cheese Sandwich"
-description = "That sandwich was DELICIOUS!! What did you put in it?"
+description = "That sandwich was DELICIOUS!! What did you put in it?."
 chance_percent = 0.1
 
 [[items]]
