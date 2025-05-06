@@ -2,7 +2,7 @@
 filename = "sword.png"
 name = "Sword"
 description = "Sadly less mighty than the pen."
-chance_percent = 24.9
+chance_percent = 23.9
 
 [[items]]
 filename = "mysterious-potion.png"
@@ -17,9 +17,9 @@ description = "Are ya winning son?"
 chance_percent = 10
 
 [[items]]
-filename = "battery.png"
-name = "Battery"
-description = "A lick can’t hurt."
+filename = "almond-water.png"
+name = "Almond Water"
+description = "Keep your sanity."
 chance_percent = 10
 
 [[items]]
@@ -58,6 +58,11 @@ name = "Potted Cactus"
 description = "Please don’t sit on this."
 chance_percent = 3
 
+[[items]]
+filename = "mind.png"
+name = "Mind"
+description = "Our devs lost these a while ago, return immediately."
+chance_percent = 2
 
 [[items]]
 filename = "candy-cane.png"
@@ -78,16 +83,10 @@ description = "Now how did this get here?"
 chance_percent = 2
 
 [[items]]
-filename = "birthday-cake.png"
-name = "Birthday Cake!"
-description = "This cake is not a lie."
-chance_percent = 1
-
-[[items]]
-filename = "life-alert.png"
-name = "Life Alert"
-description = "I’ve fallen and I can’t get up!"
-chance_percent = 2
+filename = "lemon.png"
+name = "Lemon"
+description = "Something normal for onc- AH GET IT OUT OF HERE!!!"
+chance_percent = 3
 
 [[items]]
 filename = "grass.png"
@@ -98,23 +97,35 @@ chance_percent = 1
 [[items]]
 filename = "cement-pillow.png"
 name = "Cement Pillow"
-description = "Great for fights!"
+description = "Why does this even exist?"
 chance_percent = 1
 
 [[items]]
-filename = "wumpus-nuggets.png"
-name = "Wumpus Nuggets"
-description = "Not enough people were buying Nitro, so Discord had to resort to some desperate measures."
-chance_percent = 0.5
+filename = "hexapad.gif"
+name = "Hexapad"
+description = "We shape our tools, and then our tools shape us."
+chance_percent = 0.4
 
 [[items]]
-filename = "infinitediamonds-key.gif"
-name = "InfiniteDiamond's Key"
+filename = "infinitediamond’s-key.gif"
+name = "InfiniteDiamond’s Key"
 description = "It’s the key! DM InfiniteDiamond with a screenshot of the page for a reward."
-chance_percent = 0.5
+chance_percent = 0.6
+
+[[items]]
+filename = "schrodingers-cat.gif"
+name = "Schrodinger’s Cat"
+description = "The cat escaped, and it wants revenge."
+chance_percent = 0.9
+
+[[items]]
+filename = "grilled-cheese-sandwich.gif"
+name = "Grilled Cheese Sandwich"
+description = "That sandwich was DELICIOUS!! What did you put in it?"
+chance_percent = 0.1
 
 [[items]]
 filename = "loot-table.png"
 name = "Loot Table"
-description = "For my eyes only: https://is.gd/ekiruy"
+description = "For my eyes only:https://is.gd/ekiruy"
 chance_percent = 0.1
