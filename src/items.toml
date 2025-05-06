@@ -43,7 +43,7 @@ chance_percent = 5
 
 
 [[items]]
-filename = "brokennnnnnnnnnnnn-file.png"
+filename = "broken-fileeeeeeeeeeeeeeee.png"
 name = "Broken File"
 description = "You just had to break the game, did you?"
 chance_percent = 3
@@ -57,7 +57,7 @@ chance_percent = 8
 [[items]]
 filename = "candy-cane.png"
 name = "Candy Cane"
-description = "Don’t eat that, it’s from the Christmas event two years ago!"
+description = "Don’t eat that, it’s from the Christmas event two years ago!."
 chance_percent = 2
 
 [[items]]
