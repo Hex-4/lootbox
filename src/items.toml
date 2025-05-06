@@ -2,7 +2,7 @@
 filename = "sword.png"
 name = "Sword"
 description = "Sadly less mighty than the pen."
-chance_percent = 23.9
+chance_percent = 10
 
 [[items]]
 filename = "mysterious-potion.png"
@@ -20,7 +20,7 @@ chance_percent = 10
 filename = "almond-water.png"
 name = "Almond Water"
 description = "Keep your sanity."
-chance_percent = 10
+chance_percent = 23.9
 
 [[items]]
 filename = "bone.png"
@@ -71,7 +71,7 @@ description = "Don’t eat that, it’s from the Christmas event two years ago!.
 chance_percent = 2
 
 [[items]]
-filename = "lootbox.png"
+filename = "lootbox.gif"
 name = "Lootbox"
 description = "A lootbox in a lootbox?"
 chance_percent = 2
