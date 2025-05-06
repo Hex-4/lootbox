@@ -83,7 +83,7 @@ description = "Now how did this get here?"
 chance_percent = 2
 
 [[items]]
-filename = "lemon.png"
+filename = "lemon.gif"
 name = "Lemon"
 description = "Something normal for onc- AH GET IT OUT OF HERE!!!"
 chance_percent = 3
